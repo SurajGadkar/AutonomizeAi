@@ -6,7 +6,7 @@ function RepoDetails({}) {
   const location = useLocation();
 
   const [repo, setRepo] = useState(location.state.data);
-  console.log(repo);
+  //console.log(repo);
 
   return (
     <div>

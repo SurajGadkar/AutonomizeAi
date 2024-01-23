@@ -5,6 +5,7 @@ import Repository from "./pages/Repository";
 import Header from "./component/Header/Header";
 import RepoDetails from "./pages/RepoDetails";
 import RepositoriesList from "./pages/RepositoriesList";
+import Followers from "./pages/Followers";
 
 function App() {
   return (
@@ -19,6 +20,7 @@ function App() {
             element={<RepoDetails />}
           />
           <Route path="/repositories" element={<RepositoriesList />} />
+          <Route path="/users/:username/followers" element={<Followers />} />
         </Routes>
       </BrowserRouter>
     </>

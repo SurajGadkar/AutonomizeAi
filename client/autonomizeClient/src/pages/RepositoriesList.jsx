@@ -9,7 +9,7 @@ function RepositoriesList() {
       .then((res) => (res = res.slice(0, 15)))
       .then((res) => setRepos(res));
   }, []);
-  console.log(repos);
+  //console.log(repos);
   return <div>RepositoriesList</div>;
 }
 
