@@ -4,27 +4,68 @@ import axios from "axios";
 
 export const getDataByUsername = async (req, res, next) => {
   try {
-    const login = req.params.username;
-    const userExists = await User.findOne({ login });
-
+    let username = req.params.username;
+    const userExists = await User.findOne({ login: username });
+    console.log(userExists);
     if (userExists) {
-      return res
-        .status(400)
-        .json({ message: "User already exists in the database!" });
+      return next(errorHandler(404, "User Exists in the database"));
     } else {
-      const response = await axios.get(`https://api.github.com/users/${login}`);
-      const userData = response.data;
+      try {
+        const response = await axios
+          .get(`https://api.github.com/users/${username}`)
+          .catch((err) => next(errorHandler(err)));
 
-      const newUser = new User(userData);
-      await newUser.save();
+        const userData = response.data;
 
-      res.status(200).json({ message: "User saved in the database!" });
+        console.log("Recieved", userData);
+
+        const newUser = new User(userData);
+
+        await newUser
+          .save()
+          .then(() => {
+            res.status(200).json(newUser);
+          })
+          .catch((err) => next(errorHandler(err)));
+      } catch (err) {
+        console.log(err);
+      }
     }
   } catch (err) {
-    next(err);
+    next(errorHandler(err));
   }
 };
 
 export const test = (req, res) => {
   res.send("Working");
+};
+
+export const getAllUsers = async (req, res, next) => {
+  try {
+    const users = await User.find({});
+    if (!users.length) {
+      next(errorHandler(404, "No Users Found!"));
+    }
+
+    return res.status(200).json({ users });
+  } catch (err) {
+    console.log(err);
+  }
+};
+
+export const fetchDatabaseByUsername = async (req, res, next) => {
+  try {
+    const login = req.params.username;
+    const user = await User.findOne({
+      login: { $regex: new RegExp(`^${login}$`, "i") },
+    });
+    console.log("database user", user);
+    if (!user) {
+      return next(errorHandler(404, "User not found!"));
+    }
+
+    res.status(200).json(user);
+  } catch (err) {
+    console.log(err);
+  }
 };

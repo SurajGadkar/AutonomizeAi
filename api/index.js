@@ -1,6 +1,7 @@
 import mongoose from "mongoose";
 import express from "express";
 import dotenv from "dotenv";
+import cors from "cors";
 
 import userRoutes from "./routes/user.route.js";
 
@@ -10,6 +11,7 @@ const app = express();
 
 // Enable JSON using express json middleware
 app.use(express.json());
+app.use(cors());
 
 //Local port
 const PORT = 3000;
@@ -32,7 +34,6 @@ mongoose
 
 // Routes
 app.use("/api/v1/users", userRoutes);
-
 
 app.use((err, req, res, next) => {
   const statusCode = err.statusCode || 500;

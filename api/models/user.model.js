@@ -1,7 +1,7 @@
 import mongoose from "mongoose";
 
 const userSchema = new mongoose.Schema({
-  login: { type: String, required: true },
+  login: { type: String, required: true, unique: true },
   id: { type: Number, required: true },
   node_id: { type: String, required: true },
   avatar_url: { type: String, required: true },
@@ -19,6 +19,21 @@ const userSchema = new mongoose.Schema({
   received_events_url: { type: String, required: true },
   type: { type: String, required: true },
   site_admin: { type: Boolean, required: true },
+  login: { type: String, required: true, unique: true },
+  name: { type: String, default: null },
+  company: { type: String, default: null },
+  blog: { type: String, default: "" },
+  location: { type: String, default: null },
+  email: { type: String, default: null },
+  hireable: { type: Boolean, default: null },
+  bio: { type: String, default: null },
+  twitter_username: { type: String, default: null },
+  public_repos: { type: Number, default: 1 },
+  public_gists: { type: Number, default: 0 },
+  followers: { type: Number, default: 0 },
+  following: { type: Number, default: 2 },
+  created_at: { type: Date, default: "2017-08-12T23:19:59Z" },
+  updated_at: { type: Date, default: "2020-06-17T04:25:54Z" },
 });
 
 const User = mongoose.model("User", userSchema);
