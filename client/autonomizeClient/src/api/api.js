@@ -1,6 +1,6 @@
 import axios from "axios";
 
-const url = "http://api.github.com";
+const url = "https://api.github.com";
 
 export const getUsersfromGithub = async (username) => {
   try {
