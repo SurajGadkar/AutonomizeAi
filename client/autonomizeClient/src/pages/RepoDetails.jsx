@@ -6,13 +6,29 @@ function RepoDetails({}) {
   const location = useLocation();
 
   const [repo, setRepo] = useState(location.state.data);
-  //console.log(repo);
-
+  console.log(repo);
+  const image = repo.owner.avatar_url;
   return (
-    <div>
-      <h1> Repo Details</h1>
-      <h2>{repo.description}</h2>
-    </div>
+    <>
+      {" "}
+      {repo && (
+        <div>
+          <div>
+            <img src={image} alt="repo-img" />
+            <p>{repo.description}</p>
+            <div>
+              Categories
+              {"Stars, forks, count etc..."}
+            </div>
+          </div>
+          <div>
+            <p>Application</p> <h2>{repo.name}</h2>
+            <button> set a plan</button>
+            <p>{repo.description}</p>
+          </div>
+        </div>
+      )}
+    </>
   );
 }
 

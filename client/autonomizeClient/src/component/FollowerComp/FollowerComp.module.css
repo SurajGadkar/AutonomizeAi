@@ -1,0 +1,15 @@
+.container {
+  height: 60px;
+  width: 180px;
+
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  border: 1px solid black;
+}
+
+.image {
+  height: 60px;
+  width: 60px;
+  border-radius: 2rem;
+}
