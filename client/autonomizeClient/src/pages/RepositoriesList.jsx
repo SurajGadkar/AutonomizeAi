@@ -14,10 +14,10 @@ function RepositoriesList() {
       .then((res) => setRepos(res))
       .then(setisLoading(false));
   }, []);
-  console.log(repos);
+
   return (
     <div className={styles.main__container}>
-      {repos.length &&
+      {repos.length > 0 &&
         !isLoading &&
         repos.map((repo) => {
           return (
