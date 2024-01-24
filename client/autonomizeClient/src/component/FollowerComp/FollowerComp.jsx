@@ -9,8 +9,12 @@ function FollowerComp({ id, name, image }) {
   };
   return (
     <div className={styles.container} onClick={handleFollowerRoute}>
-      <img className={styles.image} src={image} alt="follower-image" />
-      <h3 className={styles.name}>{name}</h3>
+      <div>
+        <img className={styles.image} src={image} alt="follower-image" />
+      </div>
+      <div className={styles.name}>
+        <h3>{name}</h3>
+      </div>
     </div>
   );
 }

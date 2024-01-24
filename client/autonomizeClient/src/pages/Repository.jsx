@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import { Link, useNavigate, useParams } from "react-router-dom";
 import { getAllRepoByUsername } from "../api/api.js";
 import RepoComp from "../component/RepoComp/RepoComp.jsx";
+import styles from "./Repository.module.css";
 
 function Repository() {
   const params = useParams();
@@ -36,13 +37,17 @@ function Repository() {
     navigate(`/users/${username}/followers`, { state: { followersURL } });
   };
   return (
-    <div>
-      <div>
-        <h1>{username}</h1>
-        <p>Some Useful Info</p>
-        <button onClick={handleRouteToFollowers}>Followers</button>
+    <div className={styles.main__container}>
+      <div className={styles.user__info}>
+        <h1 className={styles.username}> Repositories of {username} </h1>
+        <div className={styles.sub__userInfo}>
+          <div></div>
+          <button className={styles.btn} onClick={handleRouteToFollowers}>
+            Followers
+          </button>
+        </div>
       </div>
-      <div>
+      <div className={styles.repo_container}>
         {userRepos.length > 0 ? (
           userRepos.map((repo) => {
             //console.log(repo);

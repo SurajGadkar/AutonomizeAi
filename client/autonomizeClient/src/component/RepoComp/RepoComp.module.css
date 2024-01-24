@@ -1,13 +1,18 @@
 .container {
   width: 450px;
   height: 160px;
-  border: 1px solid black;
+
+  margin: 16px 8px;
 
   display: flex;
   padding: 2px 4px;
 
   align-items: center;
   justify-content: space-around;
+}
+
+.container:hover {
+  cursor: pointer;
 }
 
 .image__container {
@@ -27,6 +32,14 @@
 .image {
   height: 96px;
   width: 96px;
-  border: 1px solid black;
   border-radius: 4rem;
+}
+.desc {
+  color: var(--color-secondary);
+}
+
+.name {
+  display: flex;
+  align-items: center;
+  color: var(--color-primary);
 }

@@ -1,0 +1,15 @@
+.main__container {
+  margin: 8px 12px;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.repo_container {
+  width: 80%;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+}

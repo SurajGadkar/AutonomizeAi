@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { getUsersfromGithub } from "../../api/api";
 import { useNavigate } from "react-router-dom";
+import styles from "./Search.module.css";
 
 function Search() {
   const [input, setInput] = useState("");
@@ -18,13 +19,19 @@ function Search() {
   };
 
   return (
-    <div>
-      <input
-        type="text"
-        onChange={(e) => setInput(e.target.value)}
-        placeholder="Enter your github username"
-      />
-      <button onClick={handleClick}>Search</button>
+    <div className={styles.container}>
+      <h1 className={styles.banner}>Enter Github Username </h1>
+      <div className={styles.search__container}>
+        <input
+          className={styles.search}
+          type="text"
+          onChange={(e) => setInput(e.target.value)}
+          placeholder="Enter your github username"
+        />
+        <button className={styles.btn} onClick={handleClick}>
+          Search
+        </button>
+      </div>
     </div>
   );
 }
