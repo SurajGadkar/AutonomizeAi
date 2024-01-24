@@ -9,6 +9,8 @@ export default defineConfig({
       "react",
       "react-dom",
       "react-router-dom",
+      "react-icons",
+      "axios",
       // Add any other dependencies that should be treated as external
     ],
   },
